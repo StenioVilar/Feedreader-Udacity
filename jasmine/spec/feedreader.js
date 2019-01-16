@@ -8,6 +8,7 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
 $(function() {
 	
     /* This is our first test suite - a test suite just contains
@@ -85,11 +86,6 @@ $(function() {
     	
     });
     
-    describe('Initial Entries', function() {
-    	
-    	
-    });
-
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -99,10 +95,41 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+    describe('Initial Entries', function() {
+    	
+    	beforeEach(function (done) {
+    		loadFeed(0, done);
+    	});
+    	
+    	it('at least one entry', function() {
+    		var entry = $('.entry');
+            expect(entry.length).toBeGreaterThan(0);
+        });
+    	
+    });
+    
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    
+   describe('New Feed Selection', function() {
+    	
+       var firstFeed =  $('.feed').html(),
+       secondFeed;
+   
+       beforeEach(function (done) {
+    	   loadFeed(1, done);
+    	   secondFeed =  $('.feed').html();
+       });
+	
+       it('feed could change', function() {
+    	   expect(secondFeed).not.toEqual(firstFeed);
+       });
+	
+   });
+   	
+    
 }());
