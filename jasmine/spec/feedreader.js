@@ -85,18 +85,21 @@ $(function() {
         
    describe('New Feed Selection', function() {
     	
-	   var firstFeed,secondFeed;
+       var firstFeed,secondFeed;
    
        beforeEach(function (done) {
-    	   loadFeed(1, done);
-    	   firstFeed =  $('.feed').html();
-    	   loadFeed(2, done);
+    	   loadFeed(1, function() {
+    		    firstFeed = $('.feed').html();
+    		    loadFeed(2, function() {
+    		        secondFeed = $('.feed').html();
+    		        done();
+    		    });
+    		});
        });
        
        /* Ensure a feed change */
 	
        it('feed could change', function() {
-           secondFeed = $('.feed').html();
     	   expect(secondFeed).not.toEqual(firstFeed);
        });
 	
