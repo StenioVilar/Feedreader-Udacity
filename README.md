@@ -6,6 +6,6 @@ Testing JavaScript with Jasmine
 
 Objective: Learn how to test JavaScript with Jasmine Framework
 
-Open index.html to see all tests working.
+Open index.html or access: https://steniovilar.github.io/Feedreader-Udacity/ to see all tests working.
 
 Stenio Ramalho Vilar
